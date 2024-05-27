@@ -69,8 +69,10 @@ const Signup = () => {
           Create an account to enjoy all the services without any ads for free!
         </Paragraph>
         <form>
+          <Input type="username" placeholder="Username" />
           <Input type="email" placeholder="Email Address" />
           <Input type="password" placeholder="Password" />
+          <Input type="ConfirmPassword" placeholder="Confirm Password" />
           <Button>Create Account</Button>
         </form>
         <Link to="/">Already Have An Account? Sign In</Link>
