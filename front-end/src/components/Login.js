@@ -30,8 +30,8 @@ const Paragraph = styled.p`
 `;
 
 const Input = styled.input`
-  width: 100%;
-  padding: 12px;
+  width: calc(100% - 24px); /* Adjusted width to accommodate padding */
+  padding: 12px; /* Equal padding on top and bottom */
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -41,8 +41,13 @@ const Input = styled.input`
 
   &::placeholder {
     color: #000000;
+    padding-left: 6px; /* Adjusted padding for left side */
+    padding-right: 6px; /* Adjusted padding for right side */
+    opacity: 0.5; /* Reduced opacity */
+    text-indent: -6.4px; /* Move the text slightly to the left */
   }
 `;
+
 
 const Button = styled.button`
   background-color: #A7D7C5;
@@ -53,7 +58,8 @@ const Button = styled.button`
   width: 100%;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 25px;
+  margin-bottom: 10px;
 
   &:hover {
     background-color: #94C2B3;
@@ -78,5 +84,4 @@ const Login = () => {
     </Container>
   );
 };
-
 export default Login;
