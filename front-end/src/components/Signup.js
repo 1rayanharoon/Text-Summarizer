@@ -31,7 +31,7 @@ const Signup = () => {
           <button className="button">Create Account</button>
         </form>
         <div className="styled-link-wrapper">
-          Already Have An Account? <Link to="/" className="styled-link">Sign In</Link>
+          Already Have An Account? <Link to="/login" className="styled-link">Sign In</Link>
         </div>
       </div>
     </div>
