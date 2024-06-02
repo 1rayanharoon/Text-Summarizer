@@ -3,7 +3,7 @@ import { useLocation, Link } from 'react-router-dom';
 import './HomePage.css';
 import sampleImage from './sample.png';
 import Head from './Head';
-// import Footer from './Footer';
+import Footer from './Footer';
 
 function HomePage() {
   const location = useLocation();
@@ -51,9 +51,9 @@ function HomePage() {
           <Link to="/fourthcard" className="card">Fourth</Link>
         </div>
       </section>
-      {/* <footer id="footer">
+      <footer id="footer">
         <Footer />
-      </footer> */}
+      </footer>
     </div>
   );
 }
