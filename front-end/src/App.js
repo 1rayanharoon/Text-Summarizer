@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
-// import HomePage from './components/HomePage';
+import HomePage from './components/HomePage';
 // import About from './components/About';
 // import Summarizer from './components/Summarizer';
 // import Paraphraser from './components/Paraphraser';
@@ -29,7 +29,7 @@ const App = () => {
     <Router>
       {/* <ScrollToTop> */}
         <Routes>
-          {/* <Route path="/HomePage" element={<HomePage />} /> */}
+          <Route path="/HomePage" element={<HomePage />} />
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           {/* <Route path="/about-us" element={<About />} />
