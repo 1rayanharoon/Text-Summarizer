@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import './HomePage.css';
 import sampleImage from './sample.png';
-// import Head from './Head';
+import Head from './Head';
 // import Footer from './Footer';
 
 function HomePage() {
@@ -24,7 +24,7 @@ function HomePage() {
 
   return (
     <div className="HomePage">
-      {/* <Head /> */}
+      <Head />
       <header className="intro-section">
         <div className="intro-text">
           <h1>Navigating the digital landscape for success</h1>
