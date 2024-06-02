@@ -1,88 +1,40 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #A7D7C5;
-`;
-
-const FormWrapper = styled.div`
-  background-color: #F6FBF9;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  text-align: center;
-`;
-
-const Title = styled.h1`
-  color: #212B27;
-  margin-bottom: 10px;
-`;
-
-const Paragraph = styled.p`
-  color: #32403B;
-  margin-bottom: 20px;
-`;
-
-const Input = styled.input`
-  width: calc(100% - 24px); /* Adjusted width to accommodate padding */
-  padding: 12px; /* Equal padding on top and bottom */
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-  color: #000000;
-  font-size: 16px;
-
-  &::placeholder {
-    color: #000000;
-    padding-left: 6px; /* Adjusted padding for left side */
-    padding-right: 6px; /* Adjusted padding for right side */
-    opacity: 0.5; /* Reduced opacity */
-    text-indent: -6.4px; /* Move the text slightly to the left */s
-  }
-`;
-
-const Button = styled.button`
-  background-color: #A7D7C5;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 5px;
-  padding: 12px;
-  width: 100%;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 25px;
-  margin-bottom: 10px;
-
-  &:hover {
-    background-color: #94C2B3;
-  }
-`;
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import './styles.css';
 
 const Signup = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+
   return (
-    <Container>
-      <FormWrapper>
-        <Title>Create An Account</Title>
-        <Paragraph>
-          Create an account to enjoy our services 
-        </Paragraph>
+    <div className="container">
+      <div className="form-wrapper">
+        <h1 className="title">Create An Account</h1>
+        <p className="paragraph">Create an account to enjoy our services</p>
         <form>
-          <Input type="username" placeholder="Username" />
-          <Input type="email" placeholder="Email Address" />
-          <Input type="password" placeholder="Password" />
-          <Input type="ConfirmPassword" placeholder="Confirm Password" />
-          <Button>Create Account</Button>
+          <input type="text" className="input" placeholder="Username" />
+          <input type="email" className="input" placeholder="Email Address" />
+          <div className="password-input-wrapper">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              className="password-input"
+              placeholder="Password"
+            />
+            <button type="button" className="toggle-button" onClick={togglePasswordVisibility}>
+              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+            </button>
+          </div>
+          <input type="password" className="input" placeholder="Confirm Password" />
+          <button className="button">Create Account</button>
         </form>
-        <Link to="/">Already Have An Account? Sign In</Link>
-      </FormWrapper>
-    </Container>
+        <div className="styled-link-wrapper">
+          Already Have An Account? <Link to="/" className="styled-link">Sign In</Link>
+        </div>
+      </div>
+    </div>
   );
 };
 
