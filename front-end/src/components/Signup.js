@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+
+import { Link, useNavigate } from 'react-router-dom';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import './styles.css';
+
+
+
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,6 +17,9 @@ const Signup = () => {
     password: '',
     confirmPassword: ''
   });
+
+  
+const navigate = useNavigate(); // Import and use useNavigate hook
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -38,7 +46,7 @@ const Signup = () => {
       console.log('Response data:', data);
       if (response.ok) {
         // Handle successful signup (e.g., redirect to login page)
-        console.log('Signup successful', data);
+        navigate('/login');
       } else {
         // Handle errors
         console.error('Signup error', data.message);
