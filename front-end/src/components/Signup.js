@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import validator from 'validator';
 import './styles.css';
-
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,9 +13,9 @@ const Signup = () => {
     password: '',
     confirmPassword: ''
   });
-
-  
-const navigate = useNavigate(); // Import and use useNavigate hook
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -24,13 +24,44 @@ const navigate = useNavigate(); // Import and use useNavigate hook
       ...formData,
       [e.target.name]: e.target.value
     });
+    setError(''); // Clear error on input change
+  };
+
+  const validateForm = () => {
+    if (!formData.username || !formData.email || !formData.password || !formData.confirmPassword) {
+      setError('All fields are required');
+      return false;
+    }
+    if (!validator.isEmail(formData.email)) {
+      setError('Invalid email format');
+      return false;
+    }
+    if (formData.password.length < 8) {
+      setError('Password must be at least 8 characters long');
+      return false;
+    }
+    if (!/[A-Z]/.test(formData.password)) {
+      setError('Password must contain at least one uppercase letter');
+      return false;
+    }
+    if (!/[0-9]/.test(formData.password)) {
+      setError('Password must contain at least one number');
+      return false;
+    }
+    if (formData.password !== formData.confirmPassword) {
+      setError('Passwords do not match');
+      return false;
+    }
+    return true;
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    setLoading(true);
     try {
-      console.log('Submitting form data:', formData);
-      const response = await fetch('http://localhost:5000/api/users/signup', { // Ensure this URL is correct
+      const response = await fetch('http://localhost:5000/api/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -39,16 +70,15 @@ const navigate = useNavigate(); // Import and use useNavigate hook
       });
 
       const data = await response.json();
-      console.log('Response data:', data);
       if (response.ok) {
-        // Handle successful signup (e.g., redirect to login page)
         navigate('/login');
       } else {
-        // Handle errors
-        console.error('Signup error', data.message);
+        setError(data.message || 'Signup failed. Please try again.');
       }
     } catch (error) {
-      console.error('Error:', error);
+      setError('An error occurred. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -65,6 +95,7 @@ const navigate = useNavigate(); // Import and use useNavigate hook
             placeholder="Username"
             value={formData.username}
             onChange={handleChange}
+            required
           />
           <input
             type="email"
@@ -73,6 +104,7 @@ const navigate = useNavigate(); // Import and use useNavigate hook
             placeholder="Email Address"
             value={formData.email}
             onChange={handleChange}
+            required
           />
           <div className="password-input-wrapper">
             <input
@@ -82,6 +114,7 @@ const navigate = useNavigate(); // Import and use useNavigate hook
               placeholder="Password"
               value={formData.password}
               onChange={handleChange}
+              required
             />
             <button type="button" className="toggle-button" onClick={togglePasswordVisibility}>
               <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
@@ -94,8 +127,12 @@ const navigate = useNavigate(); // Import and use useNavigate hook
             placeholder="Confirm Password"
             value={formData.confirmPassword}
             onChange={handleChange}
+            required
           />
-          <button className="button" type="submit">Create Account</button>
+          {error && <div className="error-message">{error}</div>}
+          <button className="button" type="submit" disabled={loading}>
+            {loading ? 'Creating Account...' : 'Create Account'}
+          </button>
         </form>
         <div className="styled-link-wrapper">
           Already Have An Account? <Link to="/login" className="styled-link">Sign In</Link>

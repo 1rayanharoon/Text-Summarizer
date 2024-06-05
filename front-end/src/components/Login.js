@@ -1,5 +1,3 @@
-// Login.js
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,18 +7,21 @@ import './styles.css';
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError(''); // Clear error on input change
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      console.log('Submitting login data:', formData);
       const response = await fetch('http://localhost:5000/api/users/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -28,14 +29,15 @@ const Login = () => {
       });
 
       const data = await response.json();
-      console.log('Response data:', data);
       if (response.ok) {
         navigate('/'); // Redirect to dashboard upon successful login
       } else {
-        console.error('Login error', data.message);
+        setError(data.message || 'Login failed. Please try again.');
       }
     } catch (error) {
-      console.error('Error:', error);
+      setError('An error occurred. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -52,6 +54,7 @@ const Login = () => {
             placeholder="Email Address"
             value={formData.email}
             onChange={handleChange}
+            required
           />
           <div className="password-input-wrapper">
             <input
@@ -61,12 +64,16 @@ const Login = () => {
               placeholder="Password"
               value={formData.password}
               onChange={handleChange}
+              required
             />
             <button type="button" className="toggle-button" onClick={togglePasswordVisibility}>
               <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
             </button>
           </div>
-          <button className="button" type="submit">Sign In</button>
+          {error && <div className="error-message">{error}</div>}
+          <button className="button" type="submit" disabled={loading}>
+            {loading ? 'Signing In...' : 'Sign In'}
+          </button>
         </form>
         <div className="styled-link-wrapper">
           Don't Have An Account? <Link to="/signup" className="styled-link">Sign Up</Link>
