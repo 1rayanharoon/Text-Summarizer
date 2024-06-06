@@ -2,6 +2,7 @@ const express = require('express');
 const User = require('../model/User');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 
 // Signup route
 router.post('/signup', async (req, res) => {
@@ -17,10 +18,13 @@ router.post('/signup', async (req, res) => {
       return res.status(400).json({ message: 'User already exists' });
     }
 
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
     const user = await User.create({
       username,
       email,
-      password
+      password: hashedPassword
     });
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
@@ -29,6 +33,7 @@ router.post('/signup', async (req, res) => {
 
     res.status(201).json({ token, user: { id: user._id, username, email } });
   } catch (error) {
+    console.error('Error during signup:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });
@@ -43,7 +48,7 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
 
-    const isMatch = await user.matchPassword(password);
+    const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
@@ -54,6 +59,7 @@ router.post('/login', async (req, res) => {
 
     res.status(200).json({ token, user: { id: user._id, username: user.username, email: user.email } });
   } catch (error) {
+    console.error('Error during login:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });
