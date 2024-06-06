@@ -1,0 +1,190 @@
+.HomePage {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto; /* Center the content */
+  }
+  
+  /* Default spacing for small screens */
+  .intro-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: space-between;
+    margin-bottom: 40px;
+    padding: 20px; /* Base padding */
+  }
+  
+  .intro-text, .intro-image {
+    width: 45%;
+    text-align: left;
+  }
+  
+  .intro-text {
+    margin-right: auto; /* Push the text to the left */
+  }
+  
+  .intro-text h1 {
+    font-size: 32px;
+  }
+  
+  .intro-text p {
+    font-size: 18px;
+  }
+  
+  .intro-image {
+    display: flex;
+    justify-content: flex-end; /* Move the image to the right */
+    margin-left: auto; /* Ensure the image is on the right side */
+  }
+  
+  .intro-image img {
+    width: 100%;
+    height: auto;
+    max-width: 400px; /* Increase max-width for wider screens */
+  }
+  
+  .services-section {
+    margin-top: 40px;
+    padding: 20px; /* Base padding */
+  }
+  
+  .services-header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 30px; /* Increase margin for better spacing */
+  }
+  
+  .services-title {
+    background-color: #84C7AE;
+    color: black;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    height: 22px;
+  }
+  
+  .services-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Make cards responsive */
+    gap: 20px;
+    padding: 0 40px; /* Increase gap on the sides */
+  }
+  
+  .card {
+    background-color: #F3F3F3;
+    padding: 20px;
+    border-radius: 15px; /* Make the corners more round */
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add 3D shadow effect */
+    aspect-ratio: 1; /* Ensure cards remain square */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px; /* Increase font size inside cards */
+  }
+  
+  .card:nth-child(2) {
+    background-color: #84C7AE;
+  }
+  
+  .card:nth-child(3) {
+    background-color: #191A23;
+    color: white; /* Adjust text color for better contrast */
+  }
+  
+  .card:nth-child(4) {
+    background-color: #F3F3F3;
+  }
+  
+  /* Tablet screens - 768px to 1023px */
+  @media (max-width: 1023px) {
+    .intro-section {
+      flex-direction: row;
+      align-items: center;
+    }
+  
+    .intro-text, .intro-image {
+      width: 50%;
+    }
+  
+    .intro-text h1 {
+      font-size: 28px;
+    }
+  
+    .intro-text p {
+      font-size: 16px;
+    }
+  
+    .intro-image img {
+      max-width: 100%;
+    }
+  
+    .services-header {
+      flex-direction: row;
+    }
+  
+    .services-title {
+      margin-right: 10px;
+    }
+  
+    .services-cards {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Make cards responsive */
+      padding: 0 20px; /* Decrease gap on the sides */
+    }
+  }
+  
+  /* Mobile screens - 480px and below */
+  @media (max-width: 480px) {
+    .HomePage {
+      padding: 10px; /* Decrease padding for small screens */
+    }
+  
+    .intro-section {
+      flex-direction: column;
+      align-items: center;
+      padding: 10px; /* Decrease padding for small screens */
+    }
+  
+    .intro-text, .intro-image {
+      width: 97%;
+      text-align: left;
+    }
+  
+    .intro-text h1 {
+      font-size: 20px;
+    }
+  
+    .intro-text p {
+      font-size: 11px;
+    }
+  
+    .intro-image {
+      margin-top: 10px;
+    }
+  
+    .services-section {
+      padding: 10px; /* Decrease padding for small screens */
+    }
+  
+    .services-header {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .services-title {
+      margin-bottom: 10px;
+      text-align: left;
+    }
+  
+    .services-cards {
+      grid-template-columns: repeat(1, 1fr);
+      padding: 0 10px; /* Decrease gap on the sides */
+    }
+  }
+  
+  
