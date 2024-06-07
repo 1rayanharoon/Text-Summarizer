@@ -1,190 +1,379 @@
 .HomePage {
-    background-color: white;
-    color: black;
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    max-width: 1400px;
-    margin: 0 auto; /* Center the content */
-  }
-  
-  /* Default spacing for small screens */
+  background-color: white;
+  color: black;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto; /* Center the content */
+  font-family: 'Poppins', sans-serif; /* Apply Poppins font globally */
+}
+
+.intro-section {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Align items to the top */
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding: 20px; /* Base padding */
+}
+
+.intro-text, .intro-image {
+  width: 45%;
+  text-align: left;
+}
+
+.intro-text {
+  margin-right: auto; /* Push the text to the left */
+}
+
+.intro-text h1 {
+  font-size: 32px;
+}
+
+.intro-text p {
+  font-size: 15px;
+}
+
+.intro-image {
+  display: flex;
+  justify-content: flex-end; /* Move the image to the right */
+  margin-left: auto; /* Ensure the image is on the right side */
+  padding-bottom: 10px;
+}
+
+.intro-image img {
+  width: 100%;
+  height: auto;
+  max-width: 400px; /* Increase max-width for wider screens */
+}
+
+.services-section {
+  margin-top: 40px;
+  padding: 20px; /* Base padding */
+}
+
+.services-header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 30px; /* Increase margin for better spacing */
+}
+
+.services-title {
+  background-color: #84C7AE;
+  color: black;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  height: 22px;
+}
+
+.services-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Ensure a minimum width */
+  gap: 20px; /* Ensure consistent gap between cards */
+  padding: 0 40px; /* Increase gap on the sides */
+}
+
+.card {
+  width: 100%; /* Full width within the grid item */
+  height: 321px;
+  background: #fff;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease-out;
+  text-decoration: none;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.005) translateZ(0);
+  box-shadow: 0 24px 36px rgba(0, 0, 0, 0.11),
+    0 24px 46px hsla(263, 93%, 84%, 0.48);
+}
+
+.card:hover .overlay {
+  transform: scale(4) translateZ(0);
+}
+
+.card:hover .circle {
+  border-color: #f0e7ff;
+  background: #84C7AE;
+}
+
+.card:hover .circle:after {
+  background: #f0e7ff;
+}
+
+.card:hover p {
+  color: #fff;
+}
+
+.card p {
+  font-size: 17px;
+  color: #4c5656;
+  margin-top: 30px;
+  z-index: 1000;
+  transition: color 0.3s ease-out;
+}
+
+.circle {
+  width: 131px;
+  height: 131px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #84C7AE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2; /* Ensure the circle is in front of the overlay */
+  overflow: hidden; /* Ensure the image stays within the circle */
+}
+
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the entire circle */
+  border-radius: 50%; /* Ensure the image is round */
+  position: relative; /* Ensure the image is on top */
+  z-index: 3; /* Bring the image to the front */
+}
+
+.circle:after {
+  content: "";
+  width: 118px;
+  height: 118px;
+  display: block;
+  position: absolute;
+  background: #84C7AE;
+  border-radius: 50%;
+  top: 7px;
+  left: 7px;
+  z-index: 1; /* Ensure the overlay is behind the image */
+  transition: opacity 0.3s ease-out;
+}
+
+.overlay {
+  width: 118px;
+  position: absolute;
+  height: 118px;
+  border-radius: 50%;
+  background: #84C7AE;
+  top: 70px;
+  left: 50px;
+  z-index: 0;
+  transition: transform 0.3s ease-out;
+}
+
+.card:nth-child(1) {
+  background-color: #F3F3F3;
+}
+
+.card:nth-child(2) {
+  background-color: #191A23;
+}
+
+.card:nth-child(4) {
+  background-color: #191A23;
+  /* Adjust text color for better contrast */
+}
+
+.card:nth-child(3) {
+  background-color: #F3F3F3;
+}
+
+/* Tablet screens - 768px to 1023px */
+@media (max-width: 1023px) {
   .intro-section {
-    display: flex;
     flex-direction: row;
-    align-items: flex-start; /* Align items to the top */
-    justify-content: space-between;
-    margin-bottom: 40px;
-    padding: 20px; /* Base padding */
+    align-items: center;
   }
-  
+
   .intro-text, .intro-image {
-    width: 45%;
-    text-align: left;
+    width: 50%;
   }
-  
-  .intro-text {
-    margin-right: auto; /* Push the text to the left */
-  }
-  
+
   .intro-text h1 {
-    font-size: 32px;
+    font-size: 28px;
   }
-  
+
   .intro-text p {
-    font-size: 18px;
+    font-size: 16px;
   }
-  
-  .intro-image {
-    display: flex;
-    justify-content: flex-end; /* Move the image to the right */
-    margin-left: auto; /* Ensure the image is on the right side */
-  }
-  
+
   .intro-image img {
-    width: 100%;
-    height: auto;
-    max-width: 400px; /* Increase max-width for wider screens */
+    max-width: 100%;
   }
-  
-  .services-section {
-    margin-top: 40px;
-    padding: 20px; /* Base padding */
-  }
-  
+
   .services-header {
-    display: flex;
-    align-items: center;
     flex-direction: row;
-    margin-bottom: 30px; /* Increase margin for better spacing */
   }
-  
+
   .services-title {
-    background-color: #84C7AE;
-    color: black;
-    padding: 5px 10px;
     margin-right: 10px;
-    border-radius: 5px;
-    height: 22px;
   }
-  
+
   .services-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Make cards responsive */
-    gap: 20px;
-    padding: 0 40px; /* Increase gap on the sides */
+    grid-template-columns: repeat(2, 1fr); /* Two columns on tablet */
+    padding: 0 20px; /* Decrease gap on the sides */
+    justify-content: center; /* Center the content */
   }
-  
-  .card {
-    background-color: #F3F3F3;
-    padding: 20px;
-    border-radius: 15px; /* Make the corners more round */
-    text-align: center;
-    font-weight: bold;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add 3D shadow effect */
-    aspect-ratio: 1; /* Ensure cards remain square */
-    display: flex;
-    justify-content: center;
+}
+
+/* Mobile screens - 768px and below */
+@media (max-width: 768px) {
+  .HomePage {
+    padding: 0px;
+    margin: 0 20px; /* Decrease padding for small screens */
+  }
+
+  .intro-section {
+    flex-direction: column;
     align-items: center;
-    font-size: 20px; /* Increase font size inside cards */
+    padding: 10px; /* Decrease padding for small screens */
   }
-  
-  .card:nth-child(2) {
-    background-color: #84C7AE;
+
+  .intro-text {
+    width: 90%;
+    text-align: left;
+    margin: 0;
+    /* Set order for small screens */
   }
-  
-  .card:nth-child(3) {
-    background-color: #191A23;
-    color: white; /* Adjust text color for better contrast */
+
+  .intro-text h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    order: 0;
   }
-  
-  .card:nth-child(4) {
-    background-color: #F3F3F3;
+
+  .intro-image {
+    width: 90%;
+    justify-content: center;
+    margin: 10px 0; /* Ensure margin between image and text */
+    order: 2; /* Set order for small screens */
   }
-  
-  /* Tablet screens - 768px to 1023px */
-  @media (max-width: 1023px) {
-    .intro-section {
-      flex-direction: row;
-      align-items: center;
-    }
-  
-    .intro-text, .intro-image {
-      width: 50%;
-    }
-  
-    .intro-text h1 {
-      font-size: 28px;
-    }
-  
-    .intro-text p {
-      font-size: 16px;
-    }
-  
-    .intro-image img {
-      max-width: 100%;
-    }
-  
-    .services-header {
-      flex-direction: row;
-    }
-  
-    .services-title {
-      margin-right: 10px;
-    }
-  
-    .services-cards {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Make cards responsive */
-      padding: 0 20px; /* Decrease gap on the sides */
-    }
+
+  .intro-text p {
+    font-size: 13px;
+    margin-top: 12px; /* Ensure margin between text and image */
+    order: 1; /* Set order for small screens */
   }
-  
-  /* Mobile screens - 480px and below */
-  @media (max-width: 480px) {
-    .HomePage {
-      padding: 10px; /* Decrease padding for small screens */
-    }
-  
-    .intro-section {
-      flex-direction: column;
-      align-items: center;
-      padding: 10px; /* Decrease padding for small screens */
-    }
-  
-    .intro-text, .intro-image {
-      width: 97%;
-      text-align: left;
-    }
-  
-    .intro-text h1 {
-      font-size: 20px;
-    }
-  
-    .intro-text p {
-      font-size: 11px;
-    }
-  
-    .intro-image {
-      margin-top: 10px;
-    }
-  
-    .services-section {
-      padding: 10px; /* Decrease padding for small screens */
-    }
-  
-    .services-header {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .services-title {
-      margin-bottom: 10px;
-      text-align: left;
-    }
-  
-    .services-cards {
-      grid-template-columns: repeat(1, 1fr);
-      padding: 0 10px; /* Decrease gap on the sides */
-    }
+
+  .intro-image img {
+    max-width: 340px;
   }
-  
-  
+
+  .services-section {
+    margin-top: -40px;
+    padding: 10px;
+  }
+
+  .services-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .services-title {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .services-cards {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on small screens */
+    gap: 50px;
+    padding: 0 10px; /* Reduce gap on the sides */
+    justify-content: center; /* Center the content */
+    
+  }
+
+  .card {
+    width: 100%; /* Full width on mobile */
+    height: auto; /* Adjust height */
+    font-size: 18px;
+    padding: 15px;
+    height: 280px;
+  }
+}
+
+/* Mobile screens - 480px and below */
+@media (max-width: 480px) {
+  .HomePage {
+    padding: 10px; /* Decrease padding for small screens */
+    margin: 0 30px;
+  }
+
+  .intro-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px; /* Decrease padding for small screens */
+  }
+
+  .intro-text {
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    order: 0; /* Set order for small screens */
+  }
+
+  .intro-text h1 {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .intro-text p {
+    font-size: 12.5px;
+    margin-top: 10px;
+    order: 4; /* Set order for small screens */
+  }
+
+  .intro-image {
+    width: 100%;
+    justify-content: center;
+    margin: 5px 0;
+    order: 2; /* Set order for small screens */
+  }
+
+  .intro-image img {
+    max-width: 100%;
+  }
+
+  .services-section {
+    margin-top: 20px;
+    padding: 10px;
+  }
+
+  .services-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .services-header p {
+    text-align: start;
+  }
+
+  .services-title {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .services-cards {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 10px;
+    padding: 0 10px; /* Decrease gap on the sides */
+    justify-items: center; /* Center the single card */
+  }
+
+  .card {
+    font-size: 16px; /* Further reduce font size for smaller screens */
+    padding: 10px; /* Further reduce padding for smaller screens */
+    margin-bottom: 20px;
+    height: 280px;
+  }
+
+}
