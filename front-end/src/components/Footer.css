@@ -89,9 +89,9 @@
   @media (max-width: 480px) {
     .footer {
       width: 100%;
-      padding: 20px 0; /* Adjusted padding */
+      padding: 10px 0; /* Adjusted padding */
       border-radius: 0;
-      margin-top: 0;
+      margin-top: 90px;
     }
   
     .footer-container {
@@ -104,7 +104,7 @@
     }
   
     .logo {
-      order: 0;
+      order: 1;
       justify-content: center;
       width: 100%;
     }

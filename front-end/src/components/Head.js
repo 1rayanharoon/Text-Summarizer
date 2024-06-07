@@ -46,14 +46,16 @@ const Head = () => {
       </button>
       <header className="header">
         <div className="logo">
-          <img src="/path/to/logo.png" alt="Logo" />
+          <Link to="/" className="logo-text" onClick={() => setSidebarOpen(false)}>Parawrap</Link>
         </div>
+        <div class="nav-container">
         <nav className="nav-links">
           <Link to="/about-us">About us</Link>
           <Link to="/" state={{ scrollTo: 'services' }} onClick={() => setSidebarOpen(false)}>Services</Link>
           <a href="#" onClick={handleContactClick}>Contact</a>
         </nav>
         <button className="sign-out">Sign Out</button>
+        </div>
       </header>
       <aside className={`sidebar ${isSidebarOpen ? 'open' : ''}`} onClick={stopPropagation}>
         <nav className="sidebar-nav">
