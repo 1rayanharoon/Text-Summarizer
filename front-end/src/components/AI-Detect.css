@@ -1,0 +1,97 @@
+.aicontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.title h1 {
+    text-align: center;
+    font-size: 30px;
+    color: rgb(52, 74, 75);
+}
+.detector {
+    margin-top: 20px;
+    width: 800px; /* Increase width to accommodate the new layout */
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.head h1 {
+    font-size: 22px;
+    margin-left: 30px;
+}
+.head {
+    background-color: #2c2d32;
+    color: #cecece;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.input-container {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+}
+textarea {
+    width: 100%;
+    height: 180px;
+    border: none;
+    resize: none;
+    font-size: 14px;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+}
+textarea:last-of-type {
+    margin-bottom: 0;
+    margin-left: 20px;
+}
+.actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    width: 100%;
+}
+.round-button {
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: #2c2d32;
+    color: #cecece;
+    border: 1px solid #cecece;
+    cursor: pointer;
+}
+.round-button:hover {
+    background-color: #212121;
+    color: #84C7AE;
+    border-color: #84C7AE;
+}
+.result-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    text-align: center;
+    width: 100%; /* Adjust width to take full space */
+    height: 180px; /* Adjust height to match textarea */
+    opacity: 0.5; /* Initial opacity */
+}
+.result-text.visible {
+    opacity: 1; /* Full opacity when visible */
+}
+.result-text .percentage {
+    font-size: 40px; /* Font size for percentage */
+    margin: 0;
+}
+.result-text .description {
+    font-size: 15px; /* Smaller font for description */
+    margin: 0;
+}

@@ -7,7 +7,7 @@ import About from './components/About';
 import Summarizer from './components/Summarizer';
 import Paraphraser from './components/Paraphraser';
 import Translator from './components/Translator';
-// import FourthCard from './components/FourthCard';
+import AIDetect from './components/AI-Detect';
 
 const ScrollToTop = ({ children }) => {
   const { pathname, state } = useLocation();
@@ -37,7 +37,7 @@ const App = () => {
           <Route path="/summarizer" element={<Summarizer />} />
         <Route path="/paraphraser" element={<Paraphraser />} />
         <Route path="/translator" element={<Translator />} />
-        {/* <Route path="/fourthcard" element={<FourthCard />} /> */}
+        <Route path="/aidetector" element={<AIDetect />} />
         </Routes>
       </ScrollToTop>
     </Router>
