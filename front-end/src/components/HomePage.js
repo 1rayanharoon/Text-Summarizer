@@ -23,37 +23,61 @@ function HomePage() {
   }, [location]);
 
   return (
-    <div className="HomePage">
+    <div>
       <Head />
-      <header className="intro-section">
-        <div className="intro-text">
-          <h1>Navigating the digital landscape for success</h1>
-          <p>
-            Our AI-powered platform helps individuals and businesses enhance their written content and communication with advanced services such as text summarization, paraphrasing, translation, and more.
-          </p>
-        </div>
-        
-        <div className="intro-image">
-          <img src={sampleImage} alt="Intro" />
-        </div>
-      </header>
-      
-      <section className="services-section" id="services">
-        <div className="services-header">
-          <span className="services-title">Services</span>
-          <p>At our AI platform, we offer services to enhance written content and communication. These services include:</p>
-        </div>
-        
-        <div className="services-cards">
-          <Link to="/summarizer" className="card">Text Summarization</Link>
-          <Link to="/paraphraser" className="card">Paraphraser</Link>
-          <Link to="/translator" className="card">Translator</Link>
-          <Link to="/fourthcard" className="card">Fourth</Link>
-        </div>
-      </section>
-      <footer id="footer">
-        <Footer />
-      </footer>
+      <div className="HomePage">
+        <header className="intro-section">
+          <div className="intro-text">
+            <h1>Navigating the digital landscape for success</h1>
+            <p>
+            Our AI-powered platform helps individuals and businesses enhance their written content and communication with advanced services such as text summarization, paraphrasing, translation, and more. Our AI-powered platform helps individuals and businesses enhance their written content and communication with advanced services such as text summarization, paraphrasing, translation, and more.
+            </p>
+          </div>
+          <div className="intro-image">
+            <img src={sampleImage} alt="Intro" />
+          </div>
+        </header>
+        <section className="services-section" id="services">
+          <div className="services-header">
+            <span className="services-title">Services</span>
+            <p>At our AI platform, we offer services to enhance written content and communication. These services include:</p>
+          </div>
+          <div className="services-cards">
+            <Link to="/summarizer" className="card wallet">
+              <div className="overlay"></div>
+              <div className="circle">
+                <img src={sampleImage} alt="Text Summarization" />
+              </div>
+              <p>Text Summarization</p>
+            </Link>
+            
+            <Link to="/paraphraser" className="card wallet">
+              <div className="overlay"></div>
+              <div className="circle">
+                <img src={sampleImage} alt="Text Paraphrasing" />
+              </div>
+              <p>Text Paraphrasing</p>
+            </Link>
+
+            <Link to="/translator" className="card wallet">
+              <div className="overlay"></div>
+              <div className="circle">
+                <img src={sampleImage} alt="Text Translation" />
+              </div>
+              <p>Text Translation</p>
+            </Link>
+
+            <Link to="/aidetector" className="card wallet">
+              <div className="overlay"></div>
+              <div className="circle">
+                <img src={sampleImage} alt="AI Detector" />
+              </div>
+              <p>AI Detector</p>
+            </Link>
+          </div>
+        </section>
+      </div>
+      <Footer />
     </div>
   );
 }

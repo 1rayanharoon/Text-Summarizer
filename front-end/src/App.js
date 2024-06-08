@@ -5,8 +5,8 @@ import Signup from './components/Signup';
 import HomePage from './components/HomePage';
 import About from './components/About';
 import Summarizer from './components/Summarizer';
-// import Paraphraser from './components/Paraphraser';
-// import Translator from './components/Translator';
+import Paraphraser from './components/Paraphraser';
+import Translator from './components/Translator';
 // import FourthCard from './components/FourthCard';
 
 const ScrollToTop = ({ children }) => {
@@ -35,9 +35,9 @@ const App = () => {
           <Route path="/about-us" element={<About />} />
           <Route path="/services" element={<HomePage />} />
           <Route path="/summarizer" element={<Summarizer />} />
-        {/* <Route path="/paraphraser" element={<Paraphraser />} />
+        <Route path="/paraphraser" element={<Paraphraser />} />
         <Route path="/translator" element={<Translator />} />
-        <Route path="/fourthcard" element={<FourthCard />} /> */}
+        {/* <Route path="/fourthcard" element={<FourthCard />} /> */}
         </Routes>
       </ScrollToTop>
     </Router>
