@@ -2,6 +2,10 @@ import React, { useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import './HomePage.css';
 import sampleImage from './sample.png';
+import detect from './newdetect.png'
+import paraphrase from './paraphrase.png'
+import translate from './translate.png'
+import textsum from './textsum.png'
 import Head from './Head';
 import Footer from './Footer';
 
@@ -46,7 +50,7 @@ function HomePage() {
             <Link to="/summarizer" className="card wallet">
               <div className="overlay"></div>
               <div className="circle">
-                <img src={sampleImage} alt="Text Summarization" />
+                <img src={textsum} alt="Text Summarization" />
               </div>
               <p>Text Summarization</p>
             </Link>
@@ -54,7 +58,7 @@ function HomePage() {
             <Link to="/paraphraser" className="card wallet">
               <div className="overlay"></div>
               <div className="circle">
-                <img src={sampleImage} alt="Text Paraphrasing" />
+                <img src={paraphrase} alt="Text Paraphrasing" />
               </div>
               <p>Text Paraphrasing</p>
             </Link>
@@ -62,7 +66,7 @@ function HomePage() {
             <Link to="/translator" className="card wallet">
               <div className="overlay"></div>
               <div className="circle">
-                <img src={sampleImage} alt="Text Translation" />
+                <img src={translate} alt="Text Translation" />
               </div>
               <p>Text Translation</p>
             </Link>
@@ -70,7 +74,7 @@ function HomePage() {
             <Link to="/aidetector" className="card wallet">
               <div className="overlay"></div>
               <div className="circle">
-                <img src={sampleImage} alt="AI Detector" />
+                <img src={detect} alt="AI Detector" />
               </div>
               <p>AI Detector</p>
             </Link>
