@@ -1,28 +1,23 @@
-# app.py
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from transformers import pipeline
-from config import Config
-from routes import routes
-from models import mongo
+from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
 import nltk
-
-nltk.download('punkt')
 from nltk.tokenize import sent_tokenize
 
+nltk.download('punkt')
+
 app = Flask(__name__)
-app.config.from_object(Config)
-
-# Initialize CORS
 CORS(app, resources={r"/api/*": {"origins": "*"}})
-
-mongo.init_app(app)
-app.register_blueprint(routes, url_prefix='/api/users')
 
 # Load summarization model
 summarizer = pipeline("summarization", model="t5-small")
 
-# Split text into chunks
+# Load DistilBART model and tokenizer for paraphrasing
+model_name = "sshleifer/distilbart-cnn-12-6"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+paraphrase_model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+
+# Split text into chunks for summarization
 def split_text(text, max_length=512):
     sentences = sent_tokenize(text)
     current_length = 0
@@ -66,6 +61,32 @@ def summarize():
         formatted_summary = '\n\n'.join(summaries)
 
     return jsonify({'summary': formatted_summary})
+
+# Paraphrasing function
+@app.route('/api/paraphrase', methods=['POST'])
+def paraphrase():
+    data = request.get_json()
+    text = data.get('text', '')
+    if not text:
+        return jsonify({'error': 'No text provided'}), 400
+
+    input_text = f"paraphrase: {text}"
+    encoding = tokenizer.encode_plus(input_text, return_tensors="pt", max_length=512, truncation=True)
+    input_ids, attention_mask = encoding["input_ids"], encoding["attention_mask"]
+
+    outputs = paraphrase_model.generate(
+        input_ids=input_ids, 
+        attention_mask=attention_mask,
+        max_length=512,
+        num_beams=5,
+        num_return_sequences=1,
+        no_repeat_ngram_size=2,
+        early_stopping=True
+    )
+
+    paraphrased_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+    return jsonify({'paraphrase': paraphrased_text})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

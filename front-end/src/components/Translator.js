@@ -30,10 +30,16 @@ const Translator = () => {
 
   const languages = ['English', 'Urdu', 'Japanese', 'Spanish', 'French', 'German', 'Chinese', 'Russian', 'Arabic', 'Portuguese'];
 
-  const translateText = () => {
-    // Here you can implement the translation algorithm
-    // For the sake of example, I'll just set the translated text to the input text
-    setTranslatedText(inputText);
+  const translateText = async () => {
+    const response = await fetch('http://localhost:5000/api/translate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text: inputText, source: sourceLanguage, target: targetLanguage }),
+    });
+    const data = await response.json();
+    setTranslatedText(data.translated_text);
     setShowTranslatedText(true);
   };
 
