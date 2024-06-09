@@ -6,15 +6,15 @@ const Footer = () => {
   const navigate = useNavigate();
 
   const handleServicesClick = (e) => {
-    e.preventDefault(); // Prevent the default link behavior
+    e.preventDefault();
     navigate('/', { state: { scrollTo: 'services' } });
   };
 
   return (
-    <footer className="footer">
+    <footer className="footer" id="footer">
       <div className="footer-container">
         <div className="logo">
-          <img src="logo.png" alt="Positivus Logo" /> {/* Add your logo image here */}
+          <p className="logo-text">Positivus</p>
         </div>
         <div className="footer-content">
           <div className="footer-right">

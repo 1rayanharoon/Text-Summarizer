@@ -1,20 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;900&family=Poppins:wght@400;500;700&display=swap');
+
 body {
     margin: 0;
     overflow-x: hidden; 
-    background-color: #84C7AE;
 }
 
 .header {
+    background-color: #84C7AE;
+    position: relative;
+    z-index: 1; /* Ensure the header is at the base level */
+    height: 100px;
+    width: 100%; /* Make the header full width */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for better separation */
+}
+
+.header-container {
+    max-width: 1270px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #84C7AE;
-    max-width: 1270px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1; /* Ensure the header is at the base level */
-    height: 70px;
+    height: 100%; /* Ensure the container takes full height of the header */
 }
 
 .logo {
@@ -23,13 +30,13 @@ body {
 
 .logo-text {
     font-family: 'League Spartan', sans-serif;
-    font-weight: 900; /* Make the logo text extra bold */
+    font-weight: 700; /* Make the logo text extra bold */
     color: #2f2f33; /* Set the color to #191A23 */
     text-decoration: none; /* Remove underline */
-    font-size: 24px; /* Increase the font size */
+    font-size: 32px; /* Increase the font size */
     display: flex;
     align-items: center;
-    padding: 5px 10px; /* Add some padding */
+    padding: 5px 32px; /* Add some padding */
     margin-top: 20px;
 }
 
@@ -43,6 +50,7 @@ body {
     display: flex;
     gap: 20px;
     align-items: center; /* Align vertically */
+    padding-bottom: 5px;
 }
 
 .nav-links a {
@@ -57,16 +65,14 @@ body {
 }
 
 .menu-button {
-    display: none;
+    display: none; /* Hide by default */
     background: none;
     border: none;
     font-size: 24px;
     cursor: pointer;
-    padding: 10px;
+    padding: 20px;
     z-index: 3; /* Ensure the menu button is on top of the sidebar */
-    position: fixed;
-    top: 10px;
-    right: 20px;
+    position: relative; /* Make sure it's positioned correctly within the header */
 }
 
 .sign-out {
@@ -77,8 +83,10 @@ body {
     cursor: pointer;
     font-weight: 500;
     transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for hover effect */
-    border-radius: 10px; /* Add this line to make the button slightly rounded */
-    margin-left: 20px; /* Add margin to the left for spacing */
+    border-radius: 12px; /* Add this line to make the button slightly rounded */
+    margin-left: 23px; /* Add margin to the left for spacing */
+    margin-bottom: 7px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .sign-out:hover {
@@ -138,11 +146,11 @@ body {
 }
 
 @media (max-width: 1024px) {
-    .header {
+    .header-container {
         padding: 10px 15px;
     }
     .logo-text{
-        font-size: 25px;
+        font-size: 28px;
     }
     .nav-links {
         gap: 15px;
@@ -160,7 +168,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .header {
+    .header-container {
         padding: 10px;
     }
 
@@ -189,12 +197,15 @@ body {
 
 @media (max-width: 480px) {
     .nav-links,
-    .header .sign-out {
-        display: none;
+    .header-container .sign-out {
+        display: none; /* Hide nav links and sign-out button on small screens */
     }
 
     .menu-button {
-        display: block;
+        display: block; /* Show the menu button on small screens */
+        position: absolute;
+        top: 10px;
+        right: 20px; /* Position the menu button on the right side */
     }
 
     .logo img {
@@ -205,6 +216,7 @@ body {
     .sidebar-nav  {
         font-size: 14px; /* Adjust the font size for sidebar links on smaller screens */
     }
+    
     .sign-out{
         font-size: 10px;
     }
@@ -214,10 +226,8 @@ body {
     }
 }
 
-/* Additional CSS to keep header centered on extra-large screens and hide sign-out button when sidebar is open on small screens */
-
 @media (min-width: 992px) {
-    .header {
+    .header-container {
         max-width: 1270px;
         margin-left: auto;
         margin-right: auto;
@@ -240,6 +250,6 @@ body {
 
 @media (max-width: 767px) {
     .sidebar.open + .header .sign-out {
-        display: none;
+        display: none; /* Hide the sign-out button when the sidebar is open on small screens */
     }
 }

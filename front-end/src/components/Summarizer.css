@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;900&family=Poppins:wght@400;500;700&display=swap');
+
 .summarizer-wrapper {
     display: flex;
     flex-direction: column;
@@ -6,6 +8,7 @@
     background-color: #fefefe;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-family: 'Poppins', sans-serif;
   }
   
   .main-header {
@@ -23,6 +26,7 @@
     border: none;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'League Spartan', sans-serif;
   }
   
   .textarea-container,
@@ -35,6 +39,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 0 8px;
     width: calc(50% - 10px);
+    font-family: 'League Spartan', sans-serif;
   }
   
   .textarea {
@@ -47,6 +52,7 @@
     padding: 1.5px;
     border-radius: 4px;
     margin-bottom: 10px;
+    font-family: 'League Spartan', sans-serif;
   }
   
   .textarea:hover {
@@ -79,20 +85,21 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    
   }
   
   .summarize-button:hover,
   .clear-button:hover,
   .upload-button:hover {
+    
     background-color: #84c7ae;
+  
   }
-  
- 
-  
   .bottom-button-container {
     display: flex;
     justify-content: center;
     gap: 10px;
+    font-family: 'League Spartan', sans-serif;
   }
   
   .bottom-button {
@@ -102,6 +109,7 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-family: 'League Spartan', sans-serif;
   }
   
   .bottom-button:hover {
