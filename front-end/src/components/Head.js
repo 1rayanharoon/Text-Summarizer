@@ -20,14 +20,14 @@ const Head = () => {
   useEffect(() => {
     if (isSidebarOpen) {
       document.addEventListener('click', closeSidebar);
-      document.body.classList.add('sidebar-open'); // Add class to body to hide scrollbar
+      document.body.classList.add('sidebar-open');
     } else {
       document.removeEventListener('click', closeSidebar);
-      document.body.classList.remove('sidebar-open'); // Remove class from body to restore scrollbar
+      document.body.classList.remove('sidebar-open');
     }
     return () => {
       document.removeEventListener('click', closeSidebar);
-      document.body.classList.remove('sidebar-open'); // Clean up class from body on unmount
+      document.body.classList.remove('sidebar-open');
     };
   }, [isSidebarOpen]);
 
@@ -41,20 +41,22 @@ const Head = () => {
 
   return (
     <>
-      <button className="menu-button" onClick={toggleSidebar}>
-        &#9776;
-      </button>
       <header className="header">
-        <div className="logo">
-          <Link to="/" className="logo-text" onClick={() => setSidebarOpen(false)}>Parawrap</Link>
-        </div>
-        <div class="nav-container">
-        <nav className="nav-links">
-          <Link to="/about-us">About us</Link>
-          <Link to="/" state={{ scrollTo: 'services' }} onClick={() => setSidebarOpen(false)}>Services</Link>
-          <a href="#" onClick={handleContactClick}>Contact</a>
-        </nav>
-        <button className="sign-out">Sign Out</button>
+        <div className="header-container">
+          <div className="logo">
+            <Link to="/" className="logo-text" onClick={() => setSidebarOpen(false)}>Parawrap</Link>
+          </div>
+          <div className="nav-container">
+            <nav className="nav-links">
+              <Link to="/about-us">About us</Link>
+              <Link to="/" state={{ scrollTo: 'services' }} onClick={() => setSidebarOpen(false)}>Services</Link>
+              <a href="#" onClick={handleContactClick}>Contact</a>
+            </nav>
+            <button className="sign-out">Sign Out</button>
+          </div>
+          <button className="menu-button" onClick={toggleSidebar}>
+            &#9776;
+          </button>
         </div>
       </header>
       <aside className={`sidebar ${isSidebarOpen ? 'open' : ''}`} onClick={stopPropagation}>

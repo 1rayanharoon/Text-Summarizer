@@ -1,84 +1,111 @@
-.About {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .about-image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;900&family=Poppins:wght@400;500;700&display=swap');
+
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  gap: 70px; /* Adding gap between text and image */
+  font-family: 'League Spartan', sans-serif;
+}
+
+.about-text {
+  max-width: 50%;
+  flex: 1 1 300px;
+}
+
+.about-text h1 {
+  font-size: 2.5rem;
+  color: #1a1a1a;
+}
+
+.about-text p {
+  font-size: 1rem;
+  color: #1a1a1a;
+  line-height: 1.6;
+  margin: 20px 0;
+}
+
+.about-image {
+  flex: 1 1 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  border-radius: 8px;
+  object-fit: cover; /* Maintain aspect ratio */
+  object-position: center; /* Focus on center of the image */
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .about-text {
+    max-width: 100%;
+    text-align: left;
   }
 
-  .about-text {
-    text-align: center;
-    padding: 20px;
+  .about-text h1 {
+    font-size: 2rem;
+   
   }
-  
+
   .about-text p {
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 20px;
+    font-size: 0.97rem;
+    text-align: left;
   }
-  
+
   .about-image {
-    width: 100%;
-    height: auto;
+    margin-top: 20px;
+    width: 100%; /* Ensure image takes full width in smaller screens */
+  }
+
+  .about-image img {
+    width: 100%; /* Ensure image takes full width */
+    height: auto; /* Maintain aspect ratio */
+  }
+}
+@media (max-width: 768px) {
+  .about-text {
     max-width: 100%;
-    max-height: 80vh;
-    object-fit: cover;
-    margin-top: -80px;
-    z-index: 1;
+    text-align: center;
   }
-  
-  @media (max-width: 1024px) {
-    .about-image-container {
-      padding: 15px;
-    }
-    .about-text {
-        padding: 15px;
-      }
-    .about-image {
-      margin-top: 0; /* Remove margin-top */
-      max-height: 70vh;
-    }
+.about-container{
+  flex-direction: column;
+  gap: 0px;
+}
+  .about-text h1 {
+    font-size: 2rem;
+   
   }
-  
-  @media (max-width: 768px) {
-    .about-image-container {
-      padding: 10px;
-    }
-  
-    .about-image {
-      max-height: 60vh;
-    }
-    .about-text {
-        padding: 10px;
-      }
-    
-      .about-text p {
-        font-size: 16px;
-      }
+
+  .about-text p {
+    font-size: 0.95rem;
+    text-align: left;
   }
-  
-  @media (max-width: 480px) {
-    .about-image-container {
-      padding: 5px;
-    }
-  
-    .about-image {
-      max-height: 50vh;
-    }
-    .about-text {
-        padding: 5px;
-      }
-    
-      .about-text p {
-        font-size: 14px;
-      }
+
+  .about-image {
+    margin-top: 20px;
+    width: 100%; /* Ensure image takes full width in smaller screens */
   }
-  
+
+  .about-image img {
+    width: 100%; /* Ensure image takes full width */
+    height: auto; /* Maintain aspect ratio */
+  }
+}
+@media (max-width: 480px) {
+  .about-text h1 {
+    font-size: 1.75rem;
+  }
+
+  .about-text p {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+  }
+}
