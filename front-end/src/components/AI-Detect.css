@@ -100,3 +100,16 @@ textarea:last-of-type {
     font-size: 15px; /* Smaller font for description */
     margin: 0;
 }
+
+@media (max-width: 768px){
+    .aicontainer
+    {
+        margin: auto;
+        max-width: 70%;
+    }
+    .aicontainer
+    {
+        margin: auto;
+        max-width: 85%;
+    }
+  }
